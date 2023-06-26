@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GTechs.GameFramework
 {
 
-    public abstract class Manager : Singleton<Manager>
+    public abstract class Manager : MonoBehaviour
     {
         static private Dictionary<Type,Manager> m_managers = new Dictionary<Type,Manager>();
 
@@ -21,17 +21,21 @@ namespace GTechs.GameFramework
             return (T)m_managers.GetValueOrDefault(typeof(T));
         }
 
-        protected override void Awake()
+        protected virtual void Awake()
         {
-            base.Awake();
+            if (m_managers.GetValueOrDefault(GetType()) != null) 
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                SetManager(GetType(), this);
+            }
             DontDestroyOnLoad(this);
-            //finally I put my hands on Reflection
-            SetManager(GetType(), this);
         }
 
-        protected override void OnDestroy()
+        protected virtual void OnDestroy()
         {
-            base.OnDestroy();
             m_managers.Remove(GetType());
         }
 
