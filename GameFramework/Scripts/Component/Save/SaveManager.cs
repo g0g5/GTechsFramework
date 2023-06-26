@@ -8,9 +8,6 @@ namespace GTechs.GameFramework
 {
     public class SaveManager : Manager
     {
-        private void Start()
-        {
-            throw new NotImplementedException("This manager is not implemented.");
-        }
+        
     }
 }

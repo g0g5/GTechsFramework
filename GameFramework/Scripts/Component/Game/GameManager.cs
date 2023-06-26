@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 namespace GTechs.GameFramework
 {
-    public abstract class GameManager : Manager
+
+    public class GameManager : Manager
     {
         //Data fields
         public string CurrentLevelName { get; protected set; }
@@ -29,7 +30,6 @@ namespace GTechs.GameFramework
         protected override void Awake()
         {
             base.Awake();
-            //InitializeSystems();
             foreach (var manager in managers) 
             {
                 Instantiate(manager);

@@ -6,12 +6,6 @@ namespace GTechs.GameFramework
 {
     public class ConfigManager : Manager
     {
-        protected override void Awake()
-        {
-            base.Awake();
-
-            var gm = (GameManager)GameManager.Instance;
-            gm.loadedLevel.AddListener((g) => { Debug.Log("I currently do nothing but sleep."); });
-        }
+        
     }
 }
