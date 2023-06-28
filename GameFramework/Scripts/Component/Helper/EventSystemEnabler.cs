@@ -12,11 +12,22 @@ namespace GTechs.GameFramework
         // Start is called before the first frame update
         private void Start()
         {
-            var es = FindAnyObjectByType<EventSystem>();
-            if (es != null && es != GetComponent<EventSystem>()) 
+            //var es = FindAnyObjectByType<EventSystem>();
+            //if (es != null && es != GetComponent<EventSystem>()) 
+            //{
+            //    Debug.Log(es.name + "already exists.");
+            //    gameObject.SetActive(false);
+            //}
+
+            var own_eventsystem = GetComponent<EventSystem>();
+            var eventsystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
+            foreach (var eventsystem in eventsystems) 
             {
-                Debug.Log(es.name + "already exists.");
-                gameObject.SetActive(false);
+                if (eventsystem != null && eventsystem != own_eventsystem) 
+                {
+                    gameObject.SetActive(false);
+                    break;
+                }
             }
         }
 
