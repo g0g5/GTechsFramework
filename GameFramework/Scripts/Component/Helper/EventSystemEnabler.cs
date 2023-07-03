@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace GTechs.GameFramework
 {
@@ -23,7 +22,7 @@ namespace GTechs.GameFramework
             var eventsystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
             foreach (var eventsystem in eventsystems) 
             {
-                if (eventsystem != null && eventsystem != own_eventsystem) 
+                if (eventsystem != own_eventsystem) 
                 {
                     gameObject.SetActive(false);
                     break;
